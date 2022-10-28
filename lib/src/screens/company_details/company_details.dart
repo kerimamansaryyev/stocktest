@@ -5,7 +5,6 @@ import 'package:stocktest/src/localization/extensions.dart';
 import 'package:stocktest/src/services/company_details/manager.dart';
 import 'package:stocktest/src/services/company_details/tasks.dart';
 import 'package:stocktest/src/utils/exceptions/exception.dart';
-import 'package:stocktest/src/utils/string_extensions.dart';
 import 'package:stocktest/src/utils/theme/theme.dart';
 import 'package:stocktest/src/utils/theme/typography.dart';
 import 'package:stocktest/src/widget_components/error_widget.dart';

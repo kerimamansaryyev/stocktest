@@ -7,21 +7,6 @@ abstract class AppException implements Exception {
   static final StreamController<AppException> _onExceptionController =
       StreamController.broadcast();
 
-  factory AppException.recognizer(Object? result) {
-    if (result is! Map) {
-      return const OtherException();
-    }
-
-    final data = result['data'];
-    final message = data?['message'];
-
-    if (message is String) {
-      return ServerErrorException(data: data);
-    }
-
-    return const OtherException();
-  }
-
   static Stream<T> onException<T extends AppException>() =>
       _onExceptionController.stream.where((event) => event is T).cast<T>();
 
@@ -35,8 +20,12 @@ abstract class AppException implements Exception {
   }
 }
 
-abstract class GenericMessageException implements AppException {
-  String get message;
+class GenericMessageException implements AppException {
+  final String message;
+
+  GenericMessageException({
+    required this.message,
+  });
 }
 
 class AppLocalizationNotFoundException implements AppException {}
@@ -53,13 +42,4 @@ class OtherException implements GenericMessageException {
 
     return '';
   }
-}
-
-class ServerErrorException implements GenericMessageException {
-  final Map<String, dynamic> data;
-
-  const ServerErrorException({required this.data});
-
-  @override
-  String get message => data['message']?.toString() ?? '';
 }

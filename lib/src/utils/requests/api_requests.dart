@@ -3,14 +3,12 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:stocktest/src/utils/exceptions/exception.dart';
-import 'package:stocktest/src/utils/misc.dart';
+import 'package:stocktest/data.secrets.dart';
 
 typedef JsonSuccessHandler<T> = FutureOr<T> Function(dynamic decodedResponse);
-typedef JsonErrorHandler = void Function(
-  dynamic exception,
-  StackTrace? stackTrace,
-);
+typedef JsonResponseValidator = dynamic Function(dynamic decodedResponse);
+
+@visibleForTesting
 typedef ApiRequestCallBuilder = ApiRequestCall Function();
 
 class ApiRequestCall {
@@ -22,16 +20,27 @@ class ApiRequestCall {
 
   ApiRequestCall._();
 
-  static FutureOr<T> jsonValidatorMiddleware<T>(
+  Future<http.Response> getCompanyOverview(
+    http.Client client, {
+    required String symbol,
+  }) {
+    return client.get(
+      alphavantageUri(
+        path: '/query',
+        queryParameters: {
+          'function': 'OVERVIEW',
+          'symbol': symbol,
+          'apikey': alphavantageApiKey,
+        },
+      ),
+    );
+  }
+
+  static FutureOr<T> jsonParser<T>(
     http.Response response, {
     required JsonSuccessHandler<T> onSuccess,
   }) {
     final decoded = jsonDecode(response.body);
-    final success = boolParser(decoded['success']);
-    if (!success) {
-      throw AppException.recognizer(decoded);
-    }
-
     return onSuccess(decoded);
   }
 
@@ -39,4 +48,15 @@ class ApiRequestCall {
   static void injectTestBuilder(ApiRequestCallBuilder? builder) {
     _testBuilder = builder;
   }
+
+  static Uri alphavantageUri({
+    Map<String, String>? queryParameters,
+    String? path,
+  }) =>
+      Uri(
+        scheme: 'https',
+        host: 'alphavantage.co',
+        queryParameters: queryParameters,
+        path: path,
+      );
 }

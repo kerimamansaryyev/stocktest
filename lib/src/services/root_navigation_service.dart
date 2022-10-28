@@ -5,7 +5,9 @@ import 'package:stocktest/src/services/navigation_service/navigation_service.dar
 
 abstract class _Builders {
   static Widget _homeBuilder(
-          BuildContext context, Map<String, String>? parameters) =>
+    BuildContext context,
+    Map<String, String>? parameters,
+  ) =>
       const HomeScreen();
 }
 

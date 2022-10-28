@@ -1,3 +1,4 @@
+import 'package:adaptix/adaptix.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stocktest/src/utils/theme/typography.dart';
 
@@ -6,8 +7,7 @@ typedef CupertinoThemeDataResolver = CupertinoThemeData Function(
 );
 
 enum AppThemes {
-  light(_lightThemeDataResolver),
-  dark(_darkThemeDataResolver);
+  light(_lightCupertinoThemeDataResolver);
 
   const AppThemes(
     this.resolver,
@@ -21,7 +21,9 @@ enum AppThemes {
 
   CupertinoThemeData resolve(BuildContext context) => resolver(context);
 
-  static CupertinoThemeData _lightThemeDataResolver(BuildContext context) =>
+  static CupertinoThemeData _lightCupertinoThemeDataResolver(
+    BuildContext context,
+  ) =>
       _defaultCupertinoTheme.copyWith(
         brightness: Brightness.light,
         textTheme: CupertinoTextThemeData(
@@ -31,13 +33,14 @@ enum AppThemes {
         ),
       );
 
-  static CupertinoThemeData _darkThemeDataResolver(BuildContext context) =>
-      _defaultCupertinoTheme.copyWith(
-        brightness: Brightness.dark,
-        textTheme: CupertinoTextThemeData(
-          textStyle: _defaultCupertinoTheme.textTheme.textStyle.copyWith(
-            fontSize: AppTypographies.b2.style(context).fontSize,
-          ),
-        ),
+  static EdgeInsets bodyContentPadding(BuildContext context) =>
+      EdgeInsets.symmetric(
+        horizontal: 3.widthFraction(context),
       );
+
+  static double navbarHeight(BuildContext context) =>
+      MediaQuery.of(context).padding.top;
+
+  static double bottomInset(BuildContext context) =>
+      MediaQuery.of(context).padding.bottom;
 }

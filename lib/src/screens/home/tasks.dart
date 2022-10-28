@@ -1,0 +1,68 @@
+import 'package:http/http.dart' as http;
+import 'package:manager_provider/manager_provider.dart';
+import 'package:stocktest/src/models/company_overview_model.dart';
+import 'package:stocktest/src/screens/home/manager.dart';
+import 'package:stocktest/src/utils/cancelable_task_hierarchy.dart';
+import 'package:stocktest/src/utils/exceptions/exception.dart';
+import 'package:stocktest/src/utils/misc.dart';
+import 'package:stocktest/src/utils/requests/api_requests.dart';
+import 'package:stocktest/src/utils/requests/cancellable_http_task.dart';
+
+class HomeGetOverviewsTask extends AsynchronousTask<HomeManagerState>
+    with
+        CancelableAsyncTaskMixin,
+        HierarchialCancellableTask,
+        CancellableHttpTaskMixin {
+  static const taskId = 'get_overview';
+
+  @override
+  final http.Client client = http.Client();
+
+  @override
+  String get id => taskId;
+
+  @override
+  Future<HomeManagerState> run() async {
+    double capitalizationCount = 0;
+    final overviews = (await getOverviews(client))
+      ..forEach((element) {
+        capitalizationCount += element.marketCapitalization;
+      });
+
+    return HomeManagerState(
+      companyOverviews: overviews,
+      overallCapitalization: capitalizationCount,
+    );
+  }
+
+  static Future<List<CompanyOverviewDTO>> getOverviews(
+    http.Client client,
+  ) async {
+    return <CompanyOverviewDTO>[
+      for (var metaData in CompanyMetaData.values)
+        await ApiRequestCall.jsonParser<CompanyOverviewDTO>(
+          await ApiRequestCall().getCompanyOverview(
+            client,
+            symbol: metaData.symbol,
+          ),
+          onSuccess: (responseDecoded) {
+            if (responseDecoded is! Map) {
+              throw const OtherException();
+            } else if (responseDecoded.length == 1) {
+              final note = responseDecoded['Note'];
+              if (note is! String) {
+                throw const OtherException();
+              }
+              throw GenericMessageException(
+                message: note,
+              );
+            }
+            return CompanyOverviewDTO.fromMap(
+              data: leaveOnlyStringKeys(responseDecoded),
+              color: metaData.color,
+            );
+          },
+        )
+    ];
+  }
+}

@@ -11,6 +11,7 @@ environment:
 dependencies:
   adaptix: ^0.0.5
   cupertino_icons: ^1.0.2
+  fl_chart: ^0.55.2
   flutter:
     sdk: flutter
   flutter_localizations:

@@ -1,5 +1,7 @@
 {
     "backendCode": "en",
     "errorOccurred": "Some error occurred. Please, try again later.",
-    "homeTitle": "Home"
+    "homeTitle": "Home",
+    "tryAgain": "Try again",
+    "marketCapitalizationChart": "Market capitalization chart"
 }

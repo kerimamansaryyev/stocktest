@@ -1,37 +1,51 @@
 import 'package:flutter/widgets.dart';
+import 'package:stocktest/src/localization/extensions.dart';
 import 'package:stocktest/src/models/company/company.dart';
 import 'package:stocktest/src/utils/number_labels.dart';
 
-class CompanyOverviewDTO {
+class CompanyDetailsDTO {
   final String name;
   final double marketCapitalization;
   final String marketCapitalizationLabel;
-  final Color color;
   final String symbol;
+  final String address;
+  final String sector;
+  final String industry;
 
-  CompanyOverviewDTO._({
+  CompanyDetailsDTO._({
+    required this.address,
+    required this.industry,
+    required this.sector,
     required this.marketCapitalization,
     required this.marketCapitalizationLabel,
-    required this.color,
     required this.name,
     required this.symbol,
   });
 
-  factory CompanyOverviewDTO.fromMap({
+  factory CompanyDetailsDTO.fromMap({
     required Map<String, dynamic> data,
-    required Color color,
   }) {
     final model = CompanyModelDTO(data: data);
     final capitalization = model.marketCapitalization;
     final currency = model.currency;
 
-    return CompanyOverviewDTO._(
+    return CompanyDetailsDTO._(
+      sector: model.sector,
+      industry: model.industry,
+      address: model.address,
       symbol: model.primaryKey,
-      color: color,
       marketCapitalization: model.marketCapitalization,
       marketCapitalizationLabel:
           '${NumberLabel.convert(capitalization)}$currency',
       name: model.name,
     );
   }
+
+  Map<String, String> dataRows(BuildContext context) => {
+        context.translation.companySymbolLabel: symbol,
+        context.translation.companyMarketCapitalizationLabel:
+            marketCapitalizationLabel,
+        context.translation.companySectorLabel: sector,
+        context.translation.companyIndustryLabel: industry,
+      };
 }

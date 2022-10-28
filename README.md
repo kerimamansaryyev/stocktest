@@ -1,16 +1,13 @@
 # stocktest
 
-A new Flutter project.
+A demo project showing some  features of [Alpha Vantage API](https://www.alphavantage.co);
 
-## Getting Started
+## Installation
+Since the service requires an API key to fetch information, follow these steps to set up this project:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Get an API key following [this link](https://www.alphavantage.co/support/#api-key).
+2. Create `[project_root_folder]/lib/data.secrets.dart` with following content:
+```
+const alphavantageApiKey = 'YOUR_API_KEY';
+```
+3. Run the project and enjoy it!

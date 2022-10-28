@@ -3,5 +3,11 @@
     "errorOccurred": "Some error occurred. Please, try again later.",
     "homeTitle": "Home",
     "tryAgain": "Try again",
-    "marketCapitalizationChart": "Market capitalization chart"
+    "marketCapitalizationChart": "Market capitalization chart",
+    "companyDetailsTitle": "Details",
+    "companySymbolLabel": "Symbol",
+    "companyAddressLabel": "Address",
+    "companySectorLabel": "Sector",
+    "companyIndustryLabel": "Industry",
+    "companyMarketCapitalizationLabel": "Market capitalization"
 }

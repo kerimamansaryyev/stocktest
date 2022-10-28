@@ -31,6 +31,9 @@ class CompanyModelDTO extends ServerModelDTO<String> {
   static const _nameKey = 'Name';
   static const _capitalizationKey = 'MarketCapitalization';
   static const _currencyKey = 'Currency';
+  static const _sectorKey = 'Sector';
+  static const _industryKey = 'Industry';
+  static const _addressKey = 'address';
 
   const CompanyModelDTO({required Map<String, dynamic> data}) : super(data);
 
@@ -43,4 +46,10 @@ class CompanyModelDTO extends ServerModelDTO<String> {
   String get primaryKey => _symbol;
 
   String get name => dtoRawModel[_nameKey];
+
+  String get industry => dtoRawModel[_industryKey]?.toString() ?? '';
+
+  String get sector => dtoRawModel[_sectorKey]?.toString() ?? '';
+
+  String get address => dtoRawModel[_addressKey]?.toString() ?? '';
 }

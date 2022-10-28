@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:stocktest/src/localization/localization_service.dart';
 import 'package:stocktest/src/services/navigation_service/navigation_service.dart';
 import 'package:stocktest/src/services/navigation_service/root_build_context_exposer.dart';
-import 'package:stocktest/src/services/root_navigation_service.dart';
+import 'package:stocktest/src/services/navigation_service/root_navigation_service.dart';
 import 'package:stocktest/src/utils/theme/theme.dart';
 
 void main() {

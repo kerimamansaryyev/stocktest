@@ -5,6 +5,8 @@ import 'package:manager_provider/manager_provider.dart';
 import 'package:stocktest/src/localization/extensions.dart';
 import 'package:stocktest/src/services/home/manager.dart';
 import 'package:stocktest/src/services/home/tasks.dart';
+import 'package:stocktest/src/services/navigation_service/navigation_service.dart';
+import 'package:stocktest/src/services/navigation_service/root_navigation_service.dart';
 import 'package:stocktest/src/utils/exceptions/exception.dart';
 import 'package:stocktest/src/utils/theme/theme.dart';
 import 'package:stocktest/src/utils/theme/typography.dart';
@@ -214,7 +216,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     '- ${overview.name} (${overview.marketCapitalizationLabel})',
                   ),
-                  onPressed: () {},
+                  onPressed: () => AppNavigationService.of(context).push(
+                    AppRootNavigationRoutes.companyDetails,
+                    parameters: {
+                      AppRootNavigationRoutes.companyDetailsParameterKey:
+                          overview.symbol,
+                    },
+                  ),
                 )
               ],
             ),

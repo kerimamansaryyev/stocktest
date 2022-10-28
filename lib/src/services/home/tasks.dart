@@ -25,7 +25,7 @@ class HomeGetOverviewsTask extends AsynchronousTask<HomeManagerState>
   @override
   Future<HomeManagerState> run() async {
     double capitalizationCount = 0;
-    final overviews = (await getOverviews(client))
+    final overviews = (await _getOverviews(client))
       ..forEach((element) {
         capitalizationCount += element.marketCapitalization;
       });
@@ -36,7 +36,7 @@ class HomeGetOverviewsTask extends AsynchronousTask<HomeManagerState>
     );
   }
 
-  static Future<List<CompanyOverviewDTO>> getOverviews(
+  static Future<List<CompanyOverviewDTO>> _getOverviews(
     http.Client client,
   ) async {
     return <CompanyOverviewDTO>[

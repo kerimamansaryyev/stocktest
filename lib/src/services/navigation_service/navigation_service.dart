@@ -86,8 +86,6 @@ abstract class AppNavigationService {
 }
 
 class InternalAppNavigationRoute<T> implements AppNavigationRoute<T> {
-  static const quizGameParameterId = 'quiz_game';
-
   final AppNavigationRouteBuilder<T> builderFunction;
   final ParametersValidationPredicate<T>? parametersValidationPredicate;
 

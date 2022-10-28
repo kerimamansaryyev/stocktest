@@ -13,8 +13,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   http: ^0.13.5
+  intl: ^0.17.0
   manager_provider: ^0.4.2
+  meta: ^1.8.0
   provider: ^6.0.4
   
 dev_dependencies:
@@ -26,3 +30,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
+  

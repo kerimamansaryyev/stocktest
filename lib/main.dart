@@ -6,14 +6,18 @@ import 'package:stocktest/src/services/navigation_service/root_build_context_exp
 import 'package:stocktest/src/services/root_navigation_service.dart';
 import 'package:stocktest/src/utils/theme/theme.dart';
 
-class Zehinli extends StatefulWidget {
-  const Zehinli({Key? key}) : super(key: key);
-
-  @override
-  State<Zehinli> createState() => _ZehinliState();
+void main() {
+  runApp(const StockTestApp());
 }
 
-class _ZehinliState extends State<Zehinli> {
+class StockTestApp extends StatefulWidget {
+  const StockTestApp({Key? key}) : super(key: key);
+
+  @override
+  State<StockTestApp> createState() => _StockTestState();
+}
+
+class _StockTestState extends State<StockTestApp> {
   final GlobalKey<NavigatorState> _navigationGlobalKey = GlobalKey();
 
   @override

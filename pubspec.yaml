@@ -14,6 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.5
+  manager_provider: ^0.4.2
   
 dev_dependencies:
   dart_code_metrics: ^4.17.1

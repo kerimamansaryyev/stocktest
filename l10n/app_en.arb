@@ -1,4 +1,5 @@
 {
     "backendCode": "en",
-    "errorOccurred": "Some error occurred. Please, try again later."
+    "errorOccurred": "Some error occurred. Please, try again later.",
+    "homeTitle": "Home"
 }

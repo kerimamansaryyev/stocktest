@@ -1,6 +1,7 @@
 import 'package:adaptix/adaptix.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:stocktest/src/localization/localization_service.dart';
 import 'package:stocktest/src/services/navigation_service/navigation_service.dart';
 import 'package:stocktest/src/services/navigation_service/root_build_context_exposer.dart';
 import 'package:stocktest/src/services/root_navigation_service.dart';
@@ -34,6 +35,8 @@ class _StockTestState extends State<StockTestApp> {
       builder: (context) => CupertinoApp(
         theme: AppThemes.light.resolve(context),
         locale: const Locale('en'),
+        supportedLocales: LocalizationService.supportedLocales,
+        localizationsDelegates: LocalizationService.delegates,
         navigatorKey: _navigationGlobalKey,
         builder: (context, child) {
           return Provider<AppNavigationService>.value(

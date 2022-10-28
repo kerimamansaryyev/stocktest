@@ -15,19 +15,8 @@ abstract class LocalizationService {
   ];
 
   static const supportedLocales = [
-    ruLocale,
-    tkLocale,
     Locale('en'),
   ];
-
-  static const Locale fallbackLocale = Locale(ruLocaleCode);
-
-  static const tkLocaleCode = 'tk';
-
-  static const ruLocaleCode = 'ru';
-
-  static const tkLocale = Locale(tkLocaleCode);
-  static const ruLocale = Locale(ruLocaleCode);
 
   @visibleForTesting
   static Future<void> setTestLocalizations(Locale locale) async {

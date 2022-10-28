@@ -11,6 +11,7 @@ void main() {
   runApp(const StockTestApp());
 }
 
+/// A starting point of the application
 class StockTestApp extends StatefulWidget {
   const StockTestApp({Key? key}) : super(key: key);
 

@@ -1,3 +1,4 @@
+/// A class that is used to prettyfing big numbers.
 enum NumberLabel {
   _unlabeled(
     label: null,

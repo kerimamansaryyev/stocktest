@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:stocktest/src/localization/extensions.dart';
 import 'package:stocktest/src/utils/theme/theme.dart';
 
+/// A widget that is used to display an errors with [label] and possibility to refresh with [tryAgain]
 class AppErrorWidget extends StatelessWidget {
   final VoidCallback? tryAgain;
   final String? label;

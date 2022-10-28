@@ -4,6 +4,7 @@ import 'package:stocktest/src/localization/localization_service.dart';
 import 'package:stocktest/src/utils/exceptions/exception.dart';
 
 extension LocalizationTranslationExtension on BuildContext {
+  /// The extension to get [AppLocalizations] messages using a context.
   AppLocalizations get translation {
     final trnsl = LocalizationService.translation(this);
     if (trnsl == null) {

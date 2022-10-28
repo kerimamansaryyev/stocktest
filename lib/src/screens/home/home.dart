@@ -13,6 +13,11 @@ import 'package:stocktest/src/utils/theme/typography.dart';
 import 'package:stocktest/src/widget_components/error_widget.dart';
 import 'package:stocktest/src/widget_components/full_screen_wrapper.dart';
 
+/// A screen that shows an information about multiple companies.
+///
+/// Uses local manager ([HomeManager]) to get the data via [HomeManager.getCompanyOverviews]
+///
+/// NOTE: API has limitation for requests. (5 requests per 1 minute, 500 per 1 day)
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

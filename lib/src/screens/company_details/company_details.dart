@@ -11,6 +11,9 @@ import 'package:stocktest/src/utils/theme/typography.dart';
 import 'package:stocktest/src/widget_components/error_widget.dart';
 import 'package:stocktest/src/widget_components/full_screen_wrapper.dart';
 
+/// A screen to display details about a compny with parameter [symbol]
+///
+/// Uses local manager ([CompanyDetailsManager]) to get the data via [CompanyDetailsManager.getDetails]
 class CompanyDetailsScreen extends StatefulWidget {
   final String symbol;
 

@@ -11,6 +11,9 @@ typedef JsonResponseValidator = dynamic Function(dynamic decodedResponse);
 @visibleForTesting
 typedef ApiRequestCallBuilder = ApiRequestCall Function();
 
+/// A class is that used to make http requests.
+///
+/// A [_testBuilder] singleton can be injected by [injectTestBuilder] in test environments.
 class ApiRequestCall {
   static ApiRequestCallBuilder? _testBuilder;
 

@@ -8,6 +8,7 @@ import 'package:stocktest/src/utils/misc.dart';
 import 'package:stocktest/src/utils/requests/api_requests.dart';
 import 'package:stocktest/src/utils/requests/cancellable_http_task.dart';
 
+/// A task that takes [companySymbol] and fetches an information of the company accordingly from API.
 class CompanyDetailsGetDataTask
     extends AsynchronousTask<CompanyDetailsManagerState>
     with

@@ -9,6 +9,10 @@ import 'package:stocktest/src/utils/misc.dart';
 import 'package:stocktest/src/utils/requests/api_requests.dart';
 import 'package:stocktest/src/utils/requests/cancellable_http_task.dart';
 
+/// Task that makes multiple requests and unifies responses with an overview information about
+/// companies.
+///
+/// See also: [CompanyMetaData]
 class HomeGetOverviewsTask extends AsynchronousTask<HomeManagerState>
     with
         CancelableAsyncTaskMixin,

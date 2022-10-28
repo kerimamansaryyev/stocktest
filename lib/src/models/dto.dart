@@ -3,6 +3,7 @@ import 'package:stocktest/src/utils/misc.dart';
 
 typedef ServerModelDTOMapper<T> = T Function(Map<String, dynamic> element);
 
+/// Implementation of DTO (data transfer object) pattern
 @immutable
 abstract class ServerModelDTO<T> {
   @protected

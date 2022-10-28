@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:stocktest/src/localization/extensions.dart';
 import 'package:stocktest/src/models/company/company.dart';
+import 'package:stocktest/src/services/company_details/manager.dart';
 import 'package:stocktest/src/utils/number_labels.dart';
 
+/// A data transfer object derived from [CompanyModelDTO] for [CompanyDetailsManagerState]
 class CompanyDetailsDTO {
   final String name;
   final double marketCapitalization;

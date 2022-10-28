@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:stocktest/src/models/company/company_details.dart';
+import 'package:stocktest/src/models/company/company_overview.dart';
 import 'package:stocktest/src/models/dto.dart';
 
+/// The metadata is used as parameters to fetch the information about companies
+/// through the API
 enum CompanyMetaData {
   apple(
     symbol: 'AAPL',
@@ -25,6 +29,8 @@ enum CompanyMetaData {
   });
 }
 
+/// A model DTO that is used only on Application layer as a DTO(data transfer object)
+/// for [CompanyOverviewDTO] and [CompanyDetailsDTO]
 @internal
 class CompanyModelDTO extends ServerModelDTO<String> {
   static const _symbolKey = 'Symbol';

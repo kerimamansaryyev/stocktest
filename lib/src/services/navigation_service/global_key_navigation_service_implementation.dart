@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stocktest/src/services/navigation_service/navigation_service.dart';
 
+/// An implementation of navigation using [GlobalKey] with [NavigatorState] via [navigatorKey].
 mixin GlobalKeyNavigationImplementation on AppNavigationService {
   @protected
   GlobalKey<NavigatorState>? navigatorKey;

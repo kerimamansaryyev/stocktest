@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:stocktest/src/services/navigation_service/global_key_navigation_service_implementation.dart';
 
 typedef AppNavigationRouteBuilder<A> = Widget Function(
   BuildContext context,
@@ -20,6 +21,9 @@ typedef ParametersValidationPredicate<A> = bool Function(
   A paramters,
 );
 
+/// A special structure that is used to tell [AppNavigationService] to redirect on calling its methods.
+///
+/// See also: [GlobalKeyNavigationImplementation], [AppNavigationService.getRecursiveRedirect],
 @immutable
 class AppNavigationRedirect<T> {
   final AppNavigationRoute<T>? route;
@@ -31,6 +35,7 @@ class AppNavigationRedirect<T> {
   });
 }
 
+/// A route that is passed to the methods of [AppNavigationService]
 @immutable
 abstract class AppNavigationRoute<A> {
   String get routeName;
@@ -44,6 +49,7 @@ abstract class AppNavigationRoute<A> {
   );
 }
 
+/// An abstract interface of the project's navigation.
 abstract class AppNavigationService {
   BuildContext? get context;
 
@@ -83,34 +89,4 @@ abstract class AppNavigationService {
 
   static AppNavigationService of(BuildContext context) =>
       Provider.of<AppNavigationService>(context, listen: false);
-}
-
-class InternalAppNavigationRoute<T> implements AppNavigationRoute<T> {
-  final AppNavigationRouteBuilder<T> builderFunction;
-  final ParametersValidationPredicate<T>? parametersValidationPredicate;
-
-  @override
-  final String routeName;
-
-  const InternalAppNavigationRoute({
-    required this.builderFunction,
-    required this.routeName,
-    this.parametersValidationPredicate,
-  }) : super();
-
-  @override
-  Widget builder(BuildContext context, T argument) =>
-      builderFunction(context, argument);
-
-  @override
-  AppNavigationRedirect? redirect(BuildContext context, T parameters) =>
-      _validateParamters(context, parameters)
-          ? null
-          : const AppNavigationRedirect<void>(
-              route: null,
-              parameters: null,
-            );
-
-  bool _validateParamters(BuildContext context, T parameters) =>
-      parametersValidationPredicate?.call(context, parameters) ?? true;
 }

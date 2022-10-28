@@ -1,4 +1,4 @@
-import 'package:characters/characters.dart';
+import 'package:flutter/widgets.dart';
 
 extension UtilStringExtension on String {
   String capitalize() {
@@ -14,6 +14,7 @@ extension UtilStringExtension on String {
     return '$firstLetter$other';
   }
 
+  /// Enables a pretty obfuscation of [String] in [Text] widgets
   String get noBreaks => Characters(this)
       .replaceAll(Characters(''), Characters('\u{200B}'))
       .toString();

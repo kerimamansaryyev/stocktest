@@ -40,6 +40,7 @@ abstract class _Redirects {
   }
 }
 
+/// A value-objects that implement [AppNavigationRoute] with parameters of type [Map] with [String] keys and values.
 enum AppRootNavigationRoutes
     implements AppNavigationRoute<Map<String, String>?> {
   home(
@@ -85,6 +86,7 @@ enum AppRootNavigationRoutes
   static const companyDetailsParameterKey = 'symbol';
 }
 
+/// The toppest [AppNavigationService] of the project.
 class AppRootNavigationService extends AppNavigationService
     with GlobalKeyNavigationImplementation {
   static AppRootNavigationService? _singleton;

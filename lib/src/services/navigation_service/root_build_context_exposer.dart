@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// A singleton class that exposes the highest [context] of the project.
 class RootBuildContextExposer {
   static RootBuildContextExposer? _singleton;
 

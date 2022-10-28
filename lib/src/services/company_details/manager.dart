@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:stocktest/src/models/company/company_details.dart';
 import 'package:stocktest/src/services/company_details/tasks.dart';
 
+/// A manager that delegates tasks returning [CompanyDetailsManagerState]
 class CompanyDetailsManager extends Manager<CompanyDetailsManagerState> {
   CompanyDetailsManager() : super(const CompanyDetailsManagerState._initial());
 
@@ -11,6 +12,7 @@ class CompanyDetailsManager extends Manager<CompanyDetailsManagerState> {
       );
 }
 
+/// A state representation of [CompanyDetailsManager]
 @immutable
 class CompanyDetailsManagerState {
   final CompanyDetailsDTO? detailsDTO;

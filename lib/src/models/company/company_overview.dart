@@ -32,7 +32,7 @@ class CompanyOverviewDTO {
       color: color,
       marketCapitalization: model.marketCapitalization,
       marketCapitalizationLabel:
-          '${NumberLabel.convert(capitalization)}$currency',
+          '${NumberLabel.convert(capitalization)} $currency',
       name: model.name,
     );
   }

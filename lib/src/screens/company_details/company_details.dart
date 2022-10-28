@@ -146,7 +146,7 @@ class _CompanyDetailsScreenState extends State<CompanyDetailsScreen> {
                                             child: Align(
                                               alignment: Alignment.centerRight,
                                               child: Text(
-                                                dataRows[key]!.capitalize(),
+                                                dataRows[key]!,
                                                 textAlign: TextAlign.end,
                                               ),
                                             ),

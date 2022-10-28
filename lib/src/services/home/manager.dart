@@ -1,6 +1,6 @@
 import 'package:manager_provider/manager_provider.dart';
 import 'package:meta/meta.dart';
-import 'package:stocktest/src/models/company_overview_model.dart';
+import 'package:stocktest/src/models/company/company_overview.dart';
 import 'package:stocktest/src/services/home/tasks.dart';
 import 'package:stocktest/src/services/global_observers/task_fail_observer.dart';
 

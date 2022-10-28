@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:manager_provider/manager_provider.dart';
-import 'package:stocktest/src/models/company_overview_model.dart';
+import 'package:stocktest/src/models/company/company.dart';
+import 'package:stocktest/src/models/company/company_overview.dart';
 import 'package:stocktest/src/services/home/manager.dart';
 import 'package:stocktest/src/utils/cancelable_task_hierarchy.dart';
 import 'package:stocktest/src/utils/exceptions/exception.dart';
